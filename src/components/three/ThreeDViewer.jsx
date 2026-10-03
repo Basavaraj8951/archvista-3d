@@ -22,7 +22,7 @@ export default function ThreeDViewer({ house, compact = false, className = '' })
   const exit = () => { set({ cameraMode: 'exterior', walkthrough: 'stopped' }); go('isometric') }
   useEffect(() => { if (interior) setPreset({ ...ROOM_CAMS[state.room], k: Date.now() }) }, [interior, state.room])
   const fs = async () => { try { if (document.fullscreenElement) { await document.exitFullscreen(); setFull(false) } else { await wrap.current.requestFullscreen(); setFull(true) } } catch { /* unsupported */ } }
-  return <div ref={wrap} id={compact ? undefined : "viewer"} className={`relative bg-ink ${className}`}>
+  return <div ref={wrap} className={`relative bg-ink ${className}`}>
     <ErrorBoundary fallback={<div className="grid h-full place-items-center p-6 text-center text-paper">The 3D view could not start on this device.</div>}>
       <Canvas shadows dpr={[1, 2]} camera={{ position: CAMERA_PRESETS.isometric.pos, fov: 45 }} style={{ touchAction: 'none' }}>
         <Suspense fallback={<Html center><Loader label="Loading 3D" /></Html>}>
