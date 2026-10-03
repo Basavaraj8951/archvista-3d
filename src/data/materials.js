@@ -1,0 +1,6 @@
+export const PAINTS = [['Warm White','#f4efe6'],['Sand Beige','#d8c3a0'],['Light Gray','#d4d6d6'],['Concrete Gray','#8f9392'],
+  ['Olive Green','#6f7a4a'],['Deep Blue','#1f3a5f'],['Terracotta','#b8603f'],['Luxury Cream','#efe3c8']].map(([name, color]) => ({ id: name.toLowerCase().replace(/ /g, '-'), name, color }))
+export const FLOORING = [['Wood','#9a6b43'],['Light Marble','#e6e3dd'],['Dark Marble','#3a3a3d'],['Large Format Tiles','#bfbcb4'],['Concrete','#8a8a88'],['Premium Beige Tiles','#cdb99b']].map(([name, color]) => ({ id: name.toLowerCase().replace(/ /g, '-'), name, color }))
+export const CURTAINS = ['Sheer White','Beige Luxury','Dark Gray','Wooden Blind','Roller Blind'].map((name) => ({ id: name.toLowerCase().replace(/ /g, '-'), name }))
+export const MATERIALS = [['Wood','Warm grain, oak and walnut finishes','#8b5e3c'],['Marble','Polished Italian-look slabs','#e4e1da'],['Concrete','Cast and micro-cement finishes','#8a8a88'],
+  ['Stone','Honed natural stone','#a79f92'],['Fabric','Bouclé, linen and velvet','#bdae98'],['Metal','Brushed brass and matte black','#b8924f'],['Glass','Clear, fluted and tinted','#a9c7cf']].map(([name, description, color]) => ({ id: name.toLowerCase(), name, description, color }))

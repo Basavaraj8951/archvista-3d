@@ -1,0 +1,1 @@
+export default function About() { return <div className="mx-auto max-w-3xl px-4 py-10"><h1 className="text-4xl">About ARCHVISTA 3D</h1><p className="mt-4 text-ink/80">Professional designers create the homes, interiors, materials and lighting. You explore them in 3D and choose, before anything is built.</p></div> }

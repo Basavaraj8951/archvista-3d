@@ -1,0 +1,1 @@
+export default function Loader({ label = 'Loading' }) { return <div className="grid place-items-center gap-2 p-10 text-moss"><div className="spin h-8 w-8 rounded-full border-2 border-moss border-t-transparent" /><span className="text-sm">{label}</span></div> }

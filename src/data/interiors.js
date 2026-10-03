@@ -1,0 +1,1 @@
+export const INTERIORS = [['modern-luxury','Modern Luxury'],['warm-contemporary','Warm Contemporary'],['minimal-scandinavian','Minimal Scandinavian'],['indian-contemporary','Indian Contemporary'],['premium-classic','Premium Classic']].map(([id, name]) => ({ id, name, rooms: ['living','dining','kitchen','master','bathroom'] }))

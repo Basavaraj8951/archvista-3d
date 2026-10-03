@@ -1,0 +1,1 @@
+export const LIGHTING = [['Warm Ambient',0.8,'#ffcf9a'],['Modern Cove',0.7,'#fff1dc'],['Luxury Chandelier',1.1,'#ffe2b0'],['Pendant',0.9,'#ffd9a6'],['Minimal',0.6,'#ffffff'],['Premium Spotlights',1,'#fff6e8']].map(([name, intensity, color]) => ({ id: name.toLowerCase().replace(/ /g, '-'), name, intensity, color }))
