@@ -12,7 +12,7 @@ export default function CameraController({ preset, controlsRef, duration = 1.4 }
     const s = a.current; if (!s || !controlsRef.current) return
     s.t = Math.min(1, s.t + dt / duration); const e = ease(s.t)
     camera.position.set(...lerpVec(s.p0, s.to.pos, e)); controlsRef.current.target.set(...lerpVec(s.t0, s.to.target, e)); controlsRef.current.update()
-    if (s.t >= 1) a.current = null
+    if (s.t >= 1) { a.current = null; s.to.onDone?.() }
   })
   return null
 }

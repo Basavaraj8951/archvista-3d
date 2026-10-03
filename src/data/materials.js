@@ -4,3 +4,4 @@ export const FLOORING = [['Wood','#9a6b43'],['Light Marble','#e6e3dd'],['Dark Ma
 export const CURTAINS = ['Sheer White','Beige Luxury','Dark Gray','Wooden Blind','Roller Blind'].map((name) => ({ id: name.toLowerCase().replace(/ /g, '-'), name }))
 export const MATERIALS = [['Wood','Warm grain, oak and walnut finishes','#8b5e3c'],['Marble','Polished Italian-look slabs','#e4e1da'],['Concrete','Cast and micro-cement finishes','#8a8a88'],
   ['Stone','Honed natural stone','#a79f92'],['Fabric','Bouclé, linen and velvet','#bdae98'],['Metal','Brushed brass and matte black','#b8924f'],['Glass','Clear, fluted and tinted','#a9c7cf']].map(([name, description, color]) => ({ id: name.toLowerCase(), name, description, color }))
+export const CEILINGS = [['Plain White','#f4f2ee'],['Warm Cove','#efe3cf'],['Wood Slat','#a37a52'],['Charcoal','#3b3d3f']].map(([name, color]) => ({ id: name.toLowerCase().replace(/ /g, '-'), name, color }))

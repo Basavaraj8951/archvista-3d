@@ -4,6 +4,12 @@ SEE YOUR HOME. EXPERIENCE THE SPACE.
 Run: `npm install && npm run dev`  |  Build: `npm run build`
 
 ## Status
-- Phase 1 (done): config, routes, contexts, hooks, utils, common/layout, data, catalog pages, favorites, compare.
-- Phase 2: 3D core. Phase 3: interiors/rooms. Phase 4: furniture/products. Phase 5: polish, walkthrough, floor plans.
-Empty .glb paths in public/models are expected; procedural fallbacks arrive in Phase 2.
+- Phases 1-5 done: catalog, 3D exterior, interiors, furniture and products, floor plans, favorites, compare.
+
+## Known gaps
+- Walkthrough starts in the Living Room (no outside entrance step).
+- Product categories beyond sofas, beds, dining tables, wardrobes and TV units are not in the catalog yet.
+- Add real .glb files and images under public/ to replace procedural models and gradient placeholders.
+
+## Assets
+Drop real files into `public/models/...` and `public/images/...` using the filenames in `src/data`. Missing files fall back to procedural 3D models, gradients and an SVG floor plan.

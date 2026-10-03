@@ -8,3 +8,6 @@ export const CAMERA_PRESETS = {
 export const lerp = (a, b, t) => a + (b - a) * t
 export const lerpVec = (a, b, t) => a.map((v, i) => lerp(v, b[i], t))
 export const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2)
+const rc = (x = 0, z = 2.3, y = 1.5) => ({ pos: [x, y, z], target: [x * 0.4, 1.1, -2] })
+export const ROOM_CAMS = { living: rc(0.8), dining: rc(-0.8), kitchen: rc(0.5, 2.6), master: rc(-0.6, 2.4), bedroom2: rc(0.6, 2.4), bedroom3: rc(-0.4, 2.2),
+  bathroom: rc(0, 2.2), balcony: rc(0, 3, 1.7), garden: { pos: [0, 2.2, 4.5], target: [0, 0.8, -2] } }
