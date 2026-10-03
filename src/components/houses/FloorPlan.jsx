@@ -1,13 +1,13 @@
 import { useState } from 'react'
-const SETS = [['Living Room', 'Dining', 'Kitchen', 'Bedroom 2', 'Bathroom', 'Foyer'], ['Master Bedroom', 'Bedroom 3', 'Bathroom', 'Balcony', 'Study', 'Lounge'], ['Terrace', 'Bedroom 4', 'Bathroom', 'Gym', 'Store', 'Lounge']]
-const SINGLE = ['Living Room', 'Dining', 'Kitchen', 'Master Bedroom', 'Bedroom 2', 'Bathroom']
-// Uses /images/floorplans/<house>-<n>.png when it exists; otherwise draws a clean SVG plan.
+const ground = ['Living', 'Dining', 'Kitchen', 'Bedroom', 'Bath', 'Porch']
+const upper = (n) => ['Master Bed', ...Array.from({ length: Math.max(0, n - 1) }, (_, i) => `Bedroom ${i + 2}`), 'Bath', 'Balcony', 'Lounge'].slice(0, 6)
+// Uses /images/floorplans/<house>-<n>.png when present, otherwise draws a schematic SVG (not to scale).
 export default function FloorPlan({ house }) {
-  const [i, setI] = useState(0); const [broken, setBroken] = useState({})
-  const names = house.floors === 1 ? SINGLE : SETS[i]; const src = `/images/floorplans/${house.id}-${i + 1}.png`
-  return <div><div className="mb-3 flex gap-2">{house.floorPlans.map((f, k) => <button key={f} aria-pressed={i === k} onClick={() => setI(k)} className={`px-3 py-1.5 text-sm ${i === k ? 'bg-ink text-paper' : 'border border-ink/30'}`}>{f}</button>)}</div>
-    {!broken[src] ? <img src={src} alt={`${house.name} ${house.floorPlans[i]}`} onError={() => setBroken({ ...broken, [src]: true })} className="max-h-96 w-full object-contain" />
-      : <svg viewBox="0 0 372 192" role="img" aria-label={`${house.floorPlans[i]} plan`} className="w-full max-w-2xl border border-ink/20 bg-white/60"><rect x="6" y="6" width="360" height="180" fill="none" stroke="#0f1a17" strokeWidth="4" />
-        {names.map((n, k) => { const x = 6 + (k % 3) * 120, y = 6 + Math.floor(k / 3) * 90; return <g key={n + k}><rect x={x} y={y} width="120" height="90" fill={k % 2 ? '#e8ece9' : '#f4f1ea'} stroke="#0f1a17" strokeWidth="1.5" /><text x={x + 60} y={y + 50} textAnchor="middle" fontSize="11" fill="#0f1a17">{n}</text></g> })}
-        <rect x="150" y="182" width="36" height="8" fill="#b8924f" /></svg>}</div>
+  const [i, setI] = useState(0); const [img, setImg] = useState(true)
+  const names = i === 0 ? ground : upper(house.bedrooms)
+  return <div><div className="mb-3 flex gap-2">{house.floorPlans.map((f, k) => <button key={f} aria-pressed={i === k} onClick={() => { setI(k); setImg(true) }} className={`px-3 py-1.5 text-sm ${i === k ? 'bg-ink text-paper' : 'border border-ink/30'}`}>{f}</button>)}</div>
+    {img && <img key={i} src={`/images/floorplans/${house.id}-${i + 1}.png`} alt={`${house.name} ${house.floorPlans[i]}`} onError={() => setImg(false)} className="max-h-96 w-full object-contain" />}
+    {!img && <svg viewBox="0 0 440 230" role="img" aria-label={`Schematic ${house.floorPlans[i]} plan`} className="w-full max-w-2xl border border-ink/30 bg-white/60">
+      {names.map((n, k) => { const x = 10 + (k % 3) * 140, y = 10 + Math.floor(k / 3) * 110; return <g key={n}><rect x={x} y={y} width="130" height="100" fill="none" stroke="#0f1a17" strokeWidth="2" /><text x={x + 65} y={y + 55} textAnchor="middle" fontSize="13" fill="#0f1a17">{n}</text></g> })}</svg>}
+    <p className="mt-1 text-xs text-ink/60">{img ? '' : 'Schematic layout. Add images to public/images/floorplans to show the real plan.'}</p></div>
 }

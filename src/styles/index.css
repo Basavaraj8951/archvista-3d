@@ -4,17 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-paper text-ink font-sans antialiased;
-}
-
-h1,
-h2,
-h3 {
-  @apply font-display;
-}
-
-:focus-visible {
-  outline: 2px solid #b8924f;
-  outline-offset: 2px;
-}
+body{@apply bg-paper text-ink font-sans antialiased}
+h1,h2,h3{@apply font-display}
+:focus-visible{outline:2px solid #b8924f;outline-offset:2px}
